@@ -9,7 +9,6 @@
 # G	K	M	Q	U
 # V	W	X	Y	Z
 
-
 # According to all known laws of aviation, there is no way a bee should be able to fly.
 # Its wings are too small to get its fat little body off the ground.
 # The bee, of course, flies anyway because bees don't care what humans think is impossible.
@@ -88,10 +87,15 @@
 # Right. You're right.
 
 # Bpsesfrhv pt dbwk wtnzh blyi nd gtplhpnt, hench cr oh ydv l dceo cenkff dt bdbo hn ddw. Phi yrhqp fpo heys dgbbwa ht qoh phr dgp klevhac msqo sbza neo upnqof. Hec mceo, nb rnqprn, bkloc ftzxdv mcpbqrc mceoc qst'h pbcn higp nkgbor herhw lr cgcsdrcdbo. Xhbdhx, lblim. Xobwdhx, lblim. Xobwdhx, lblim. Xobwdhx, lblim. EYne, dbbpg lof xobwdhh! Koh'cy iolgh cn ga g klevhac. Mfpsz! Fctbuldph pr ptbqo! Sekctu! Tltu nt d pcbntl. Ohbdh? Dlczsz? Lfbg? Pbo znq mckltxo hilr ci ogacthrtu? C sft'h. P'bwa icsq wnq gr. Dhhqrhq ptlpi. Qro heo polppr, Oszf alhenc agsl qtsq qetoz dns hesdo. Cnssz. C'k ceschol. Onco'c het mpffqgph. Xn'ct xncv ssnqf nd osq, rnt. G ancbnpe cnstpn pbsf, lbb D'p. Yncv ssnqf. Gb! P knh g piltu qtrhk tnco. Xnq qth arhh no znqf uzny. Nv! Htlo'p xc! Vlxt hn qr! Xh'bwb dh cr fhy 118,000. Dxc! Mfpsz, P hhdq onq, pots abwstu rh heo enqco! Eov, Dflk. Eox, Dlczsz. Cr hegp uzvyv uhb? L bphhao. Cctsclb flv, qpffqgpshez. Toxtp nengkeh S'l gbmh ph. Hecno bdvp qpfbo rsenhd, hecno bdvi opko iieeyhd. Hesdh xnct bhwvlsf. Hecno bdvr shdbhmt. C'k kalf P heyhq l fdv ftl ophieilmhf lsnzra Oeo Ilxt. Osq fsl sexc dlim lsbzbncnth. Il, Dlczsz. Fphpt, msnhltu b gqrpgieh? Beyhqp qeysq. Eofp ldnqn Apfhuch? Xolt. Osg khstu hn hen bzrnclb? Tn, C'k tnp vhstu. Txncxdsqw qtnyi, porhq peqonto, osq fch. Qst'h vlpoh ch nt f dykrczcnd. Imrt l enhetbl. S kgoci oc bnqbf tlxt rkpo qtevhot ngn nd heh xdv. L ktyo hilr cernsstpfhptu ft bgqrcxotp afpw lthey nqs fdv. Hegp'i yow xh qst'h toob tgpbhpntc. Dso, ugpht b lch na reqr gofnc hec bcprmqcpgeroc. Xhbwb, Lflg, esqdv xh fpc xot. Xh fpc! Mcec-xot. Bgot! Tlbwbhfkplo! Ingbothr, dbpkfov, lsporhkgcreof dceoc, iatbco xhbieqo Btbe Fznvxhbk. Hhbsexc, Toh Ipwc Bphv qpffqgprhm pblcyd sa 9:15. Ntle pntibqfoc nqp snccxntchp Dof mckpor oszf pbcnnc gp Entow Cofqrnpchi! Ylkk ht ccsq hzf sha esqdv? L itbsf ph'r cqrh npcotpghpnt. Eolfr qi! Tnch xt mh. Qcetc oszf tlofp dof fthoeztfr corslo heo npbg gp lba hckoc. Yhofnc higp ph'bwb dh blwt? B klevhao cpbsz. Xhbieqo hn Entce, l fpwcrsht nl Nntocse ftf l agpn nd heo Ecegvnt Upnqa. Pilr cr ch! Vhy. Yhxy. Xh uhhy hegp osg, fp d mco, egth xnsmhq onqi zenbh klbn hn mtev hn het chsth hinco xnq pbh znsu lns oszf hihdh brlo. Entox mckpor hiot nqp zlbplth Stbwbhh Resqi fcrhv peo topefp hn Heo Epwo. Nzf hni-rcbcnn ansqgbl cr fghngbhppbbwdw sedhp-snscnpeob, rsotp-glsqrhof lof fmmedbc-bnthnzfob rhhn hecr dsnhiltu iyceoh dofzi vphi lop lsporhpepwt mhdbot udhx znq uhhy dp... Entov! Otlp vcpk hdp eno. Peo'c qx snqrco! Reo cr? Xoi, yn'ct bbwb inqrcor. Pckto. Vnq'cn pcktev.
-private_key_ = list("theonpicsralbdfgkmquvwxzy")
+private_key_ = list("theonpicsralbdfgkmquvwxyz")
 
-
+# T	H	E	O	N
+# P	I	C	S	R
+# A	L	B	D	F
+# G	K	M	Q	U
+# V	W	X	Y	Z
 import random
+import math
 def mutate(inp):
     key = list(inp)
     i, j = random.sample(range(25), 2)
@@ -108,22 +112,13 @@ def decrypt(text, key):
 
     string = ""
 
-    # keep only letters
-    cleaned = ""
-
-    for ch in text.lower():
-        if ch.isalpha():
-            if ch == 'j':
-                ch = 'i'
-            cleaned += ch
-
     # must be even length
-    if len(cleaned) % 2 == 1:
-        cleaned = cleaned[:-1]
+    if len(text) % 2 == 1:
+        text = text[:-1]
 
-    for i in range(0, len(cleaned), 2):
-        a = cleaned[i]
-        b = cleaned[i+1]
+    for i in range(0, len(text), 2):
+        a = text[i]
+        b = text[i+1]
 
         r1, c1 = pos[a]
         r2, c2 = pos[b]
@@ -142,58 +137,182 @@ def decrypt(text, key):
 
     return string
 
+
 def score(text):
-    text = ''.join(c.upper() for c in text if c.isalpha())
+    text = ''.join(c for c in text.upper() if c.isalpha())
 
-    if len(text) < 4:
-        return -10**9
+    q = quadgrams
+    t = trigrams
+    b = bigrams
+    l = letter_counts
 
-    # Common English quadgrams
-    quadgrams = {
-        "TION": 5, "THER": 5, "THAT": 4, "HERE": 4,
-        "WITH": 4, "MENT": 4, "IONS": 4, "OULD": 4,
-        "IGHT": 4, "HAVE": 4, "THES": 3, "TING": 3,
-        "ANDT": 3, "EDTH": 3, "INGT": 3
-    }
+    qf = quad_floor
+    tf = tri_floor
+    bf = bi_floor
+    lf = letter_floor
 
-    score = 0
+    s = 0
 
     for i in range(len(text) - 3):
-        q = text[i:i+4]
-        score += quadgrams.get(q, -2)
-    quad_score = score
-    return quad_score
+        s += q.get(text[i:i+4], qf)
+
+    for i in range(len(text) - 2):
+        s += 0.5 * t.get(text[i:i+3], tf)
+
+    for i in range(len(text) - 1):
+        s += 0.2 * b.get(text[i:i+2], bf)
+
+    for c in text:
+        s += 0.05 * l.get(c, lf)
+
+    return s
+
+quad_floor = 0
+tri_floor = 0
+bi_floor = 0
+letter_floor = 0
+def init_floors():
+    global quad_floor, tri_floor, bi_floor, letter_floor
+    quad_floor = math.log10(0.01 / sum(10**v for v in quadgrams.values()))
+    tri_floor  = math.log10(0.01 / sum(10**v for v in trigrams.values()))
+    bi_floor   = math.log10(0.01 / sum(10**v for v in bigrams.values()))
+    letter_floor = math.log10(0.01 / sum(10**v for v in letter_counts.values()))
+    
+quadgrams = {}
+trigrams = {}
+bigrams = {}
+letter_counts = {}
+def load_files():
+    with open("quadgrams.txt", "r") as f:
+        for line in f:
+            quad, count = line.split()
+            count = int(count)
+            quadgrams[quad] = count
+    with open("trigrams.txt", "r") as f:
+        for line in f:
+            tri, count = line.split()
+            count = int(count)
+            trigrams[tri] = count
+    with open("bigrams.txt", "r") as f:
+        for line in f:
+            bi, count = line.split()
+            count = int(count)
+            bigrams[bi] = count
+    with open("letter_counts.txt", "r") as f:
+        for line in f:
+            letter, count = line.split()
+            count = int(count)
+            letter_counts[letter] = count
+
+def build_log_tables():
+    global quad_floor, tri_floor, bi_floor, letter_floor
+
+    total_quads = sum(quadgrams.values())
+    for k in quadgrams:
+        quadgrams[k] = math.log10(quadgrams[k] / total_quads)
+    quad_floor = math.log10(0.01 / total_quads)
+
+    total_tris = sum(trigrams.values())
+    for k in trigrams:
+        trigrams[k] = math.log10(trigrams[k] / total_tris)
+    tri_floor = math.log10(0.01 / total_tris)
+
+    total_bis = sum(bigrams.values())
+    for k in bigrams:
+        bigrams[k] = math.log10(bigrams[k] / total_bis)
+    bi_floor = math.log10(0.01 / total_bis)
+
+    total_letters = sum(letter_counts.values())
+    for k in letter_counts:
+        letter_counts[k] = math.log10(letter_counts[k] / total_letters)
+    letter_floor = math.log10(0.01 / total_letters)
+    
+def preprocess_playfair(text):
+    text = ''.join(c.lower() for c in text if c.isalpha())
+    text = text.replace('j', 'i')
+
+    out = []
+    i = 0
+
+    while i < len(text):
+        a = text[i]
+
+        if i + 1 == len(text):
+            out.append(a)
+            break
+
+        b = text[i + 1]
+
+        if a == b:
+            out.append(a)
+            out.append('x')
+            i += 1
+        else:
+            out.append(a)
+            out.append(b)
+            i += 2
+
+    if len(out) % 2 == 1:
+        out.append('x')
+
+    return ''.join(out)
 
 if __name__ == "__main__":
+    load_files()
+    build_log_tables()
+    
     text = "Bpsesfrhv pt dbwk wtnzh blyi nd gtplhpnt, hench cr oh ydv l dceo cenkff dt bdbo hn ddw. Phi yrhqp fpo heys dgbbwa ht qoh phr dgp klevhac msqo sbza neo upnqof. Hec mceo, nb rnqprn, bkloc ftzxdv mcpbqrc mceoc qst'h pbcn higp nkgbor herhw lr cgcsdrcdbo. Xhbdhx, lblim. Xobwdhx, lblim. Xobwdhx, lblim. Xobwdhx, lblim. EYne, dbbpg lof xobwdhh! Koh'cy iolgh cn ga g klevhac. Mfpsz! Fctbuldph pr ptbqo! Sekctu! Tltu nt d pcbntl. Ohbdh? Dlczsz? Lfbg? Pbo znq mckltxo hilr ci ogacthrtu? C sft'h. P'bwa icsq wnq gr. Dhhqrhq ptlpi. Qro heo polppr, Oszf alhenc agsl qtsq qetoz dns hesdo. Cnssz. C'k ceschol. Onco'c het mpffqgph. Xn'ct xncv ssnqf nd osq, rnt. G ancbnpe cnstpn pbsf, lbb D'p. Yncv ssnqf. Gb! P knh g piltu qtrhk tnco. Xnq qth arhh no znqf uzny. Nv! Htlo'p xc! Vlxt hn qr! Xh'bwb dh cr fhy 118,000. Dxc! Mfpsz, P hhdq onq, pots abwstu rh heo enqco! Eov, Dflk. Eox, Dlczsz. Cr hegp uzvyv uhb? L bphhao. Cctsclb flv, qpffqgpshez. Toxtp nengkeh S'l gbmh ph. Hecno bdvp qpfbo rsenhd, hecno bdvi opko iieeyhd. Hesdh xnct bhwvlsf. Hecno bdvr shdbhmt. C'k kalf P heyhq l fdv ftl ophieilmhf lsnzra Oeo Ilxt. Osq fsl sexc dlim lsbzbncnth. Il, Dlczsz. Fphpt, msnhltu b gqrpgieh? Beyhqp qeysq. Eofp ldnqn Apfhuch? Xolt. Osg khstu hn hen bzrnclb? Tn, C'k tnp vhstu. Txncxdsqw qtnyi, porhq peqonto, osq fch. Qst'h vlpoh ch nt f dykrczcnd. Imrt l enhetbl. S kgoci oc bnqbf tlxt rkpo qtevhot ngn nd heh xdv. L ktyo hilr cernsstpfhptu ft bgqrcxotp afpw lthey nqs fdv. Hegp'i yow xh qst'h toob tgpbhpntc. Dso, ugpht b lch na reqr gofnc hec bcprmqcpgeroc. Xhbwb, Lflg, esqdv xh fpc xot. Xh fpc! Mcec-xot. Bgot! Tlbwbhfkplo! Ingbothr, dbpkfov, lsporhkgcreof dceoc, iatbco xhbieqo Btbe Fznvxhbk. Hhbsexc, Toh Ipwc Bphv qpffqgprhm pblcyd sa 9:15. Ntle pntibqfoc nqp snccxntchp Dof mckpor oszf pbcnnc gp Entow Cofqrnpchi! Ylkk ht ccsq hzf sha esqdv? L itbsf ph'r cqrh npcotpghpnt. Eolfr qi! Tnch xt mh. Qcetc oszf tlofp dof fthoeztfr corslo heo npbg gp lba hckoc. Yhofnc higp ph'bwb dh blwt? B klevhao cpbsz. Xhbieqo hn Entce, l fpwcrsht nl Nntocse ftf l agpn nd heo Ecegvnt Upnqa. Pilr cr ch! Vhy. Yhxy. Xh uhhy hegp osg, fp d mco, egth xnsmhq onqi zenbh klbn hn mtev hn het chsth hinco xnq pbh znsu lns oszf hihdh brlo. Entox mckpor hiot nqp zlbplth Stbwbhh Resqi fcrhv peo topefp hn Heo Epwo. Nzf hni-rcbcnn ansqgbl cr fghngbhppbbwdw sedhp-snscnpeob, rsotp-glsqrhof lof fmmedbc-bnthnzfob rhhn hecr dsnhiltu iyceoh dofzi vphi lop lsporhpepwt mhdbot udhx znq uhhy dp... Entov! Otlp vcpk hdp eno. Peo'c qx snqrco! Reo cr? Xoi, yn'ct bbwb inqrcor. Pckto. Vnq'cn pcktev."
+    text = preprocess_playfair(text)
     key = "abcdefghiklmnopqrstuvwxyz"
-    best_key = key
-    best_score = score(decrypt(text, key))
-    current_score = best_score
-    iteration_score = best_score
-    random.shuffle(list(key))
-    stack = [key]
-    for i in range(100): # try 100 random iterations
-        copy = list(key)
-        random.shuffle(copy)
-        iteration_score = score(decrypt(text, copy))
-        for j in range(20): # add 20 random mutated versions of the key
-            stack.append(mutate(copy))
-        while stack: # iterate and score the keys
-            key = stack.pop()
-            current_score = score(decrypt(text, key))
-            if iteration_score < current_score: # if the iteration score is better add mutations of that key to the stack
-                print("update")
-                iteration_score = current_score
-                iteration_key = key
-                for k in range(50): # add 50 random mutated versions of the key
-                    new_key = key
-                    for l in range(3): # mutate each key 1 time
-                        new_key = mutate(new_key)
-                    stack.append(key)
-        print("Iteration", i, "Score:", iteration_score, "Key:", ''.join(key))
-        if iteration_score > best_score:
-            best_key = iteration_key
-            best_score = iteration_score
-            print("New best key:", ''.join(best_key), "Score:", best_score)
-    print("Best key:", ''.join(best_key), "Score:", best_score)
+    decrypted = decrypt(text, private_key_)
+    print(decrypted, "\nScore:", score(decrypted), "\nKey:", ''.join(key))
+    best_key = list(key)
+    best_score = score(decrypt(text, best_key))
+
+    for restart in range(20):  # multiple restarts helps a lot
+        current_key = list(key)
+        random.shuffle(current_key)
+
+        current_score = score(decrypt(text, current_key))
+
+        T = 10.0  # starting temperature
+        no_improve = 0
+        for iteration in range(10000):
+            # reheat if poor progress
+            if no_improve > 1000 and T < 3:
+                T = 10
+            no_improve += 1
+            
+            # mutate
+            new_key = current_key[:]
+
+            # number of swaps depends on temperature
+            num_swaps = 1 if T < 1 else random.randint(1, 3) + int(T//3)
+
+            for _ in range(num_swaps):
+                new_key = mutate(new_key)
+                
+                
+            new_score = score(decrypt(text, new_key))
+
+            delta = new_score - current_score
+
+            # annealing acceptance
+            if delta > 0 or random.random() < math.exp(delta / T*2):
+                current_key = new_key
+                current_score = new_score
+                no_improve = 0
+
+            # track best
+            if current_score > best_score:
+                best_key = current_key[:]
+                best_score = current_score
+                print("New best:", decrypt(text, best_key)[:100], "Score:", best_score, "Key:", ''.join(best_key), "T:", T)
+
+            # cool down
+            T *= 0.999
+
+        print("Restart", restart, "best score:", best_score)
+
+    print("Best key:", ''.join(best_key))
+    print(decrypt(text, best_key))
