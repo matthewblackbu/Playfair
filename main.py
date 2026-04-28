@@ -269,7 +269,7 @@ if __name__ == "__main__":
     best_key = list(key)
     best_score = score(decrypt(text, best_key))
 
-    for restart in range(20):  # multiple restarts helps a lot
+    for restart in range(100):  # multiple restarts helps a lot
         current_key = list(key)
         random.shuffle(current_key)
 
@@ -282,6 +282,8 @@ if __name__ == "__main__":
             if no_improve > 1000 and T < 3:
                 T = 10
             no_improve += 1
+            if no_improve > 2000:
+                break
             
             # mutate
             new_key = current_key[:]
