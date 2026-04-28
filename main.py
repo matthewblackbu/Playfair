@@ -260,61 +260,38 @@ def preprocess_playfair(text):
 if __name__ == "__main__":
     load_files()
     build_log_tables()
-    
     text = "Bpsesfrhv pt dbwk wtnzh blyi nd gtplhpnt, hench cr oh ydv l dceo cenkff dt bdbo hn ddw. Phi yrhqp fpo heys dgbbwa ht qoh phr dgp klevhac msqo sbza neo upnqof. Hec mceo, nb rnqprn, bkloc ftzxdv mcpbqrc mceoc qst'h pbcn higp nkgbor herhw lr cgcsdrcdbo. Xhbdhx, lblim. Xobwdhx, lblim. Xobwdhx, lblim. Xobwdhx, lblim. EYne, dbbpg lof xobwdhh! Koh'cy iolgh cn ga g klevhac. Mfpsz! Fctbuldph pr ptbqo! Sekctu! Tltu nt d pcbntl. Ohbdh? Dlczsz? Lfbg? Pbo znq mckltxo hilr ci ogacthrtu? C sft'h. P'bwa icsq wnq gr. Dhhqrhq ptlpi. Qro heo polppr, Oszf alhenc agsl qtsq qetoz dns hesdo. Cnssz. C'k ceschol. Onco'c het mpffqgph. Xn'ct xncv ssnqf nd osq, rnt. G ancbnpe cnstpn pbsf, lbb D'p. Yncv ssnqf. Gb! P knh g piltu qtrhk tnco. Xnq qth arhh no znqf uzny. Nv! Htlo'p xc! Vlxt hn qr! Xh'bwb dh cr fhy 118,000. Dxc! Mfpsz, P hhdq onq, pots abwstu rh heo enqco! Eov, Dflk. Eox, Dlczsz. Cr hegp uzvyv uhb? L bphhao. Cctsclb flv, qpffqgpshez. Toxtp nengkeh S'l gbmh ph. Hecno bdvp qpfbo rsenhd, hecno bdvi opko iieeyhd. Hesdh xnct bhwvlsf. Hecno bdvr shdbhmt. C'k kalf P heyhq l fdv ftl ophieilmhf lsnzra Oeo Ilxt. Osq fsl sexc dlim lsbzbncnth. Il, Dlczsz. Fphpt, msnhltu b gqrpgieh? Beyhqp qeysq. Eofp ldnqn Apfhuch? Xolt. Osg khstu hn hen bzrnclb? Tn, C'k tnp vhstu. Txncxdsqw qtnyi, porhq peqonto, osq fch. Qst'h vlpoh ch nt f dykrczcnd. Imrt l enhetbl. S kgoci oc bnqbf tlxt rkpo qtevhot ngn nd heh xdv. L ktyo hilr cernsstpfhptu ft bgqrcxotp afpw lthey nqs fdv. Hegp'i yow xh qst'h toob tgpbhpntc. Dso, ugpht b lch na reqr gofnc hec bcprmqcpgeroc. Xhbwb, Lflg, esqdv xh fpc xot. Xh fpc! Mcec-xot. Bgot! Tlbwbhfkplo! Ingbothr, dbpkfov, lsporhkgcreof dceoc, iatbco xhbieqo Btbe Fznvxhbk. Hhbsexc, Toh Ipwc Bphv qpffqgprhm pblcyd sa 9:15. Ntle pntibqfoc nqp snccxntchp Dof mckpor oszf pbcnnc gp Entow Cofqrnpchi! Ylkk ht ccsq hzf sha esqdv? L itbsf ph'r cqrh npcotpghpnt. Eolfr qi! Tnch xt mh. Qcetc oszf tlofp dof fthoeztfr corslo heo npbg gp lba hckoc. Yhofnc higp ph'bwb dh blwt? B klevhao cpbsz. Xhbieqo hn Entce, l fpwcrsht nl Nntocse ftf l agpn nd heo Ecegvnt Upnqa. Pilr cr ch! Vhy. Yhxy. Xh uhhy hegp osg, fp d mco, egth xnsmhq onqi zenbh klbn hn mtev hn het chsth hinco xnq pbh znsu lns oszf hihdh brlo. Entox mckpor hiot nqp zlbplth Stbwbhh Resqi fcrhv peo topefp hn Heo Epwo. Nzf hni-rcbcnn ansqgbl cr fghngbhppbbwdw sedhp-snscnpeob, rsotp-glsqrhof lof fmmedbc-bnthnzfob rhhn hecr dsnhiltu iyceoh dofzi vphi lop lsporhpepwt mhdbot udhx znq uhhy dp... Entov! Otlp vcpk hdp eno. Peo'c qx snqrco! Reo cr? Xoi, yn'ct bbwb inqrcor. Pckto. Vnq'cn pcktev."
     text = preprocess_playfair(text)
     key = "abcdefghiklmnopqrstuvwxyz"
-    decrypted = decrypt(text, private_key_)
-    print(decrypted, "\nScore:", score(decrypted), "\nKey:", ''.join(key))
     best_key = list(key)
     best_score = score(decrypt(text, best_key))
-
-    for restart in range(100):  # multiple restarts helps a lot
-        current_key = list(key)
-        random.shuffle(current_key)
-
-        current_score = score(decrypt(text, current_key))
-
+    for restart in range(100): 
+        current_key = list(key)  
+        random.shuffle(current_key) # generate a new key
+        current_score = score(decrypt(text, current_key)) # baseline score for this key
         T = 10.0  # starting temperature
         no_improve = 0
-        for iteration in range(10000):
-            # reheat if poor progress
-            if no_improve > 1000 and T < 3:
+        for iteration in range(10000): # Loop through mutating the key
+            if no_improve > 1000 and T < 3: # increase heat if no improvement
                 T = 10
             no_improve += 1
-            if no_improve > 2000:
+            if no_improve > 2000: # restart if still no improvement
                 break
-            
-            # mutate
             new_key = current_key[:]
-
-            # number of swaps depends on temperature
-            num_swaps = 1 if T < 1 else random.randint(1, 3) + int(T//3)
-
-            for _ in range(num_swaps):
+            num_swaps = 1 if T < 1 else random.randint(1, 3) + int(T//3) # swaps based on temperature
+            for _ in range(num_swaps): # mutate the key
                 new_key = mutate(new_key)
-                
-                
-            new_score = score(decrypt(text, new_key))
-
+            new_score = score(decrypt(text, new_key)) # score it
             delta = new_score - current_score
-
-            # annealing acceptance
-            if delta > 0 or random.random() < math.exp(delta / T*2):
+            if delta > 0 or random.random() < math.exp(delta / T*2): # accept better or sometimes worse keys based on temperature
                 current_key = new_key
                 current_score = new_score
                 no_improve = 0
-
-            # track best
-            if current_score > best_score:
+            if current_score > best_score: # update best key if improved
                 best_key = current_key[:]
                 best_score = current_score
                 print("New best:", decrypt(text, best_key)[:100], "Score:", best_score, "Key:", ''.join(best_key), "T:", T)
-
-            # cool down
-            T *= 0.999
-
-        print("Restart", restart, "best score:", best_score)
-
-    print("Best key:", ''.join(best_key))
-    print(decrypt(text, best_key))
+            T *= 0.999 # cool a small amount
+        print("Restart", restart, "best score:", best_score) # track restarts and best score
+    print("Best key:", ''.join(best_key)) # final decryption with best key
+    print(decrypt(text, best_key)) # print the decrypted text with the best key
